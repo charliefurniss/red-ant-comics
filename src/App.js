@@ -7,15 +7,23 @@ import { Header, Favourites, ComicsList } from './components';
 const App = () => {
   const [favourites, setFavourites] = useState([]);
 
-  const handleAddToFavourites = (favourite) => {
-    if (favourites.length === 0) setFavourites(favourite);
-    if (!favourites.includes(favourite)) {
-      setFavourites([...favourites, favourite]);
+  const isFavourite = (comic) => favourites.includes(comic);
+
+  const addToFavourites = (comic) => {
+    if (!isFavourite(comic)) {
+      setFavourites([...favourites, comic]);
     }
   };
 
+  const removeFromFavourites = (comic) => {
+    const filteredFavourites = favourites.filter((f) => f.id !== comic.id);
+    setFavourites(filteredFavourites);
+  };
+
   return (
-    <AppState.Provider value={{ favourites, handleAddToFavourites }}>
+    <AppState.Provider
+      value={{ favourites, addToFavourites, removeFromFavourites, isFavourite }}
+    >
       <Header />
       <main class='site-content'>
         <ComicsList />
