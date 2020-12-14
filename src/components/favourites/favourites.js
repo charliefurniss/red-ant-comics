@@ -2,13 +2,21 @@ import React from 'react';
 import { useAppState } from '../../app-state';
 
 export const Favourites = () => {
-  const { favourites, removeFromFavourites } = useAppState();
+  const {
+    favourites,
+    removeFromFavourites,
+    isPanelOpen,
+    togglePanelState,
+  } = useAppState();
+  const panelClassList = isPanelOpen
+    ? 'favourites-panel open'
+    : 'favourites-panel';
 
   return (
-    <div id='favourites-panel' class='favourites-panel open'>
+    <div id='favourites-panel' class={panelClassList}>
       <div class='favourites-header'>
         <h2>Favourites</h2>
-        <button class='close js-close'></button>
+        <button class='close js-close' onClick={togglePanelState}></button>
       </div>
       <div class='favourites-content'>
         <ul class='favourites-list'>

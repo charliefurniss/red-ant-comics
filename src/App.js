@@ -6,6 +6,7 @@ import { Header, Favourites, ComicsList } from './components';
 
 const App = () => {
   const [favourites, setFavourites] = useState([]);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   const isFavourite = (comic) => favourites.includes(comic);
 
@@ -20,9 +21,18 @@ const App = () => {
     setFavourites(filteredFavourites);
   };
 
+  const togglePanelState = () => setIsPanelOpen(!isPanelOpen);
+
   return (
     <AppState.Provider
-      value={{ favourites, addToFavourites, removeFromFavourites, isFavourite }}
+      value={{
+        favourites,
+        addToFavourites,
+        removeFromFavourites,
+        isFavourite,
+        isPanelOpen,
+        togglePanelState,
+      }}
     >
       <Header />
       <main class='site-content'>
