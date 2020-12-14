@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppState } from '../../app-state';
 
 export const Favourites = () => {
-  const { favourites } = useAppState();
+  const { favourites, removeFromFavourites } = useAppState();
 
   return (
     <div id='favourites-panel' class='favourites-panel open'>
@@ -15,7 +15,10 @@ export const Favourites = () => {
           {favourites.map((favourite) => (
             <li key={favourite.id}>
               {favourite.title}
-              <button class='remove js-remove'></button>
+              <button
+                class='remove js-remove'
+                onClick={() => removeFromFavourites(favourite)}
+              ></button>
             </li>
           ))}
         </ul>
