@@ -15,7 +15,6 @@ const App = () => {
     fetch(url)
       .then((res) => res.json())
       .then((json) => {
-        console.log({ comics: json.data.results });
         setComicsState({ loading: false, comics: json.data.results });
       });
   }, [setComicsState]);

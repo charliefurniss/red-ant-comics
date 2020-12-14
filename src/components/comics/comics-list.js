@@ -8,7 +8,7 @@ export const ComicsList = ({ comicsState }) => {
   return (
     <ul id='comics-list' class='comics-list'>
       {comicsState.comics.map((comic) => {
-        return <Comic comic={comic} />;
+        return <Comic comic={comic} key={comic.id} />;
       })}
     </ul>
   );

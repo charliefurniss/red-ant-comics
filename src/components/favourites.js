@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Favourites = () => {
   return (
-    <div id='favourites-panel' class='favourites-panel open'>
+    <div id='favourites-panel' class='favourites-panel'>
       <div class='favourites-header'>
         <h2>Favourites</h2>
         <button class='close js-close'></button>
