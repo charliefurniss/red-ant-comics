@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useEffect, useState } from 'react';
 
-function App() {
+import './App.css';
+import { Header, Favourites, ComicsList } from './components';
+
+const App = () => {
+  const [comicsState, setComicsState] = useState({
+    loading: true,
+    comics: null,
+  });
+  useEffect(() => {
+    setComicsState({ loading: true });
+    const url =
+      'https://gateway.marvel.com/v1/public/comics?apikey=3cb62d086d5debdeea139095cbb07fe4&ts=redant&hash=140e85a50884cef76d614f6dacada288';
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log({ comics: json.data.results });
+        setComicsState({ loading: false, comics: json.data.results });
+      });
+  }, [setComicsState]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main class='site-content'>
+        <ComicsList comicsState={comicsState} />
+      </main>
+      <Favourites />
+    </>
   );
-}
+};
 
 export default App;
