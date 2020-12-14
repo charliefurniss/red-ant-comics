@@ -8,23 +8,23 @@ export const Favourites = () => {
     isPanelOpen,
     togglePanelState,
   } = useAppState();
-  const panelClassList = isPanelOpen
+  const panelclassNameList = isPanelOpen
     ? 'favourites-panel open'
     : 'favourites-panel';
 
   return (
-    <div id='favourites-panel' class={panelClassList}>
-      <div class='favourites-header'>
+    <div className={panelclassNameList}>
+      <div className='favourites-header'>
         <h2>Favourites</h2>
-        <button class='close js-close' onClick={togglePanelState}></button>
+        <button className='close js-close' onClick={togglePanelState}></button>
       </div>
-      <div class='favourites-content'>
-        <ul class='favourites-list'>
+      <div className='favourites-content'>
+        <ul className='favourites-list'>
           {favourites.map((favourite) => (
             <li key={favourite.id}>
               {favourite.title}
               <button
-                class='remove js-remove'
+                className='remove js-remove'
                 onClick={() => removeFromFavourites(favourite)}
               ></button>
             </li>

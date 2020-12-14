@@ -11,7 +11,7 @@ const FavouritesButton = ({ comic }) => {
     ? removeFromFavourites
     : addToFavourites;
   return (
-    <button class='button js-add' onClick={() => handleClick(comic)}>
+    <button className='button js-add' onClick={() => handleClick(comic)}>
       {buttonLabel}
     </button>
   );
@@ -23,8 +23,8 @@ export const Comic = ({ comic }) => {
   const imageUrl = comic?.images[0]?.path + '/portrait_uncanny.jpg';
 
   return (
-    <li class='comic-item'>
-      <div class='comic-card'>
+    <li className='comic-item'>
+      <div className='comic-card'>
         <img src={imageUrl} alt={`${comic.title} title`} />
         <h2>{comic.title}</h2>
         <FavouritesButton comic={comic} />

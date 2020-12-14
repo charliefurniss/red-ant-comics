@@ -1,6 +1,5 @@
 import { React, useState } from 'react';
 
-import './App.css';
 import { AppState } from './app-state';
 import { Header, Favourites, ComicsList } from './components';
 
@@ -35,7 +34,7 @@ const App = () => {
       }}
     >
       <Header />
-      <main class='site-content'>
+      <main className='site-content'>
         <ComicsList />
       </main>
       <Favourites />

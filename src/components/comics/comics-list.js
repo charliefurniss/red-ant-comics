@@ -21,7 +21,7 @@ export const ComicsList = () => {
   if (comicsState.loading) return <h1>Loading...</h1>;
 
   return (
-    <ul id='comics-list' class='comics-list'>
+    <ul className='comics-list'>
       {comicsState.comics.map((comic) => {
         return <Comic comic={comic} key={comic.id} />;
       })}
