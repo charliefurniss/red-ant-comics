@@ -4,7 +4,7 @@ import { useAppState } from '../../app-state';
 export const Favourites = () => {
   const {
     favourites,
-    removeFromFavourites,
+    updateFavourites,
     isPanelOpen,
     togglePanelState,
   } = useAppState();
@@ -25,7 +25,7 @@ export const Favourites = () => {
               {favourite.title}
               <button
                 className='remove js-remove'
-                onClick={() => removeFromFavourites(favourite)}
+                onClick={() => updateFavourites(favourite)}
               ></button>
             </li>
           ))}

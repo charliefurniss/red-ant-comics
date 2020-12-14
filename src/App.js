@@ -9,15 +9,12 @@ const App = () => {
 
   const isFavourite = (comic) => favourites.includes(comic);
 
-  const addToFavourites = (comic) => {
-    if (!isFavourite(comic)) {
-      setFavourites([...favourites, comic]);
-    }
-  };
+  const updateFavourites = (comic) => {
+    const updatedFavourites = !isFavourite(comic)
+      ? [...favourites, comic]
+      : favourites.filter((f) => f.id !== comic.id);
 
-  const removeFromFavourites = (comic) => {
-    const filteredFavourites = favourites.filter((f) => f.id !== comic.id);
-    setFavourites(filteredFavourites);
+    setFavourites(updatedFavourites);
   };
 
   const togglePanelState = () => setIsPanelOpen(!isPanelOpen);
@@ -26,8 +23,7 @@ const App = () => {
     <AppState.Provider
       value={{
         favourites,
-        addToFavourites,
-        removeFromFavourites,
+        updateFavourites,
         isFavourite,
         isPanelOpen,
         togglePanelState,
